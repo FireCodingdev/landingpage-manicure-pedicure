@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Nails – Manicure & Pedicure Premium</title>
+  <meta name="description" content="Studio de manicure e pedicure premium. Unhas perfeitas, atendimento exclusivo. Agende sua visita agora!" />
+
+  <!-- =============================================
+       GOOGLE ADS / GTM / PIXEL – substitua pelos IDs reais
+  ============================================= -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Ads Conversion Tag – substitua AW-XXXXXXX pelo seu ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXX');
+    // Evento de conversão – dispare ao clicar em "Agendar"
+    function gtag_report_conversion(url) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-XXXXXXX/XXXXXXXXXXX',
+        'event_callback': function() { if (url) window.location = url; }
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Meta (Facebook) Pixel – substitua XXXXXXXXXXXXXXXXXX pelo seu ID -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'XXXXXXXXXXXXXXXXXX');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
+  <!-- End Facebook Pixel -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & VARS ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #fdf6ee;
+      --blush:  #e8c5b0;
+      --rose:   #c9806a;
+      --deep:   #3a1f1a;
+      --mid:    #7a4a3a;
+      --gold:   #c9a96e;
+      --white:  #fffaf5;
+      --text:   #4a2e26;
+
+      --ff-serif: 'Cormorant Garamond', Georgia, serif;
+      --ff-sans:  'Jost', sans-serif;
+
+      --radius: 4px;
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-sans);
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section--alt { background: var(--white); }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--ff-sans);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 16px;
+    }
+
+    h1,h2,h3 { font-family: var(--ff-serif); font-weight: 400; line-height: 1.15; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      font-family: var(--ff-sans);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .btn--primary {
+      background: var(--deep);
+      color: var(--cream);
+    }
+    .btn--primary:hover { background: var(--rose); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(58,31,26,.25); }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--deep);
+      border: 1.5px solid var(--deep);
+    }
+    .btn--outline:hover { background: var(--deep); color: var(--cream); transform: translateY(-2px); }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(253,246,238,.95);
+      backdrop-filter: blur(12px);
+      padding: 14px 0;
+      box-shadow: 0 2px 24px rgba(58,31,26,.08);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      letter-spacing: .05em;
+      color: var(--deep);
+    }
+    .nav-logo span { color: var(--rose); }
+
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-size: .78rem;
+      font-weight: 400;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text);
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: var(--rose);
+      transform: scaleX(0); transform-origin: left;
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta { }
+
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--deep);
+      transition: var(--transition);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232,197,176,.45) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,128,106,.15) 0%, transparent 60%),
+        var(--cream);
+    }
+
+    /* decorative lines */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg, transparent, transparent 79px,
+        rgba(201,128,106,.06) 79px, rgba(201,128,106,.06) 80px
+      );
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--rose); }
+
+    .hero h1 {
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      color: var(--deep);
+      margin-bottom: 28px;
+    }
+    .hero h1 em { color: var(--rose); font-style: italic; }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 420px;
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-badges {
+      display: flex; gap: 32px;
+      margin-top: 56px; padding-top: 40px;
+      border-top: 1px solid rgba(201,128,106,.2);
+    }
+    .hero-badge-num {
+      font-family: var(--ff-serif);
+      font-size: 2.4rem;
+      color: var(--deep);
+      line-height: 1;
+    }
+    .hero-badge-label {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 4px;
+    }
+
+    /* hero visual */
+    .hero-visual {
+      position: relative;
+    }
+    .hero-img-wrap {
+      position: relative;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 580px;
+      object-fit: cover;
+      filter: saturate(0.9);
+    }
+
+    /* placeholder gradient image */
+    .hero-img-placeholder {
+      width: 100%; height: 580px;
+      background:
+        linear-gradient(160deg, #e8c5b0 0%, #c9806a 40%, #a05a45 80%, #3a1f1a 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-serif);
+      font-size: 1.2rem;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .1em;
+    }
+
+    .hero-img-deco {
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 120px; height: 120px;
+      border: 1.5px solid rgba(201,128,106,.4);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-img-deco2 {
+      position: absolute;
+      bottom: 24px; left: -28px;
+      background: var(--white);
+      padding: 20px 24px;
+      box-shadow: 0 8px 40px rgba(58,31,26,.12);
+      border-radius: var(--radius);
+    }
+    .hero-card-text {
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      color: var(--deep);
+    }
+    .hero-card-sub {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 2px;
+    }
+    .stars { color: var(--gold); font-size: .9rem; margin-bottom: 4px; }
+
+    /* ===== SERVICES ===== */
+    .services-header {
+      text-align: center; margin-bottom: 64px;
+    }
+    .services-header h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--deep);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .service-card:hover { background: var(--deep); }
+    .service-card:hover .service-name,
+    .service-card:hover .service-desc,
+    .service-card:hover .service-price { color: var(--cream); }
+    .service-card:hover .service-icon { background: rgba(255,255,255,.1); color: var(--blush); }
+
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--rose);
+      transform: scaleX(0); transform-origin: left;
+      transition: var(--transition);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(201,128,106,.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      transition: var(--transition);
+    }
+
+    .service-name {
+      font-family: var(--ff-serif);
+      font-size: 1.6rem;
+      color: var(--deep);
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+
+    .service-desc {
+      font-size: .85rem;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .service-price {
+      font-family: var(--ff-serif);
+      font-size: 1.3rem;
+      color: var(--rose);
+      transition: var(--transition);
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-inner {
+      width: 100%; height: 520px;
+      background: linear-gradient(135deg, #e8c5b0, #c9806a, #7a4a3a);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.5);
+      font-family: var(--ff-serif);
+      font-size: 1rem;
+      letter-spacing: .1em;
+    }
+    .about-img-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--deep);
+      color: var(--cream);
+      padding: 28px;
+      text-align: center;
+    }
+    .about-img-badge strong {
+      font-family: var(--ff-serif);
+      font-size: 2.8rem;
+      display: block;
+      line-height: 1;
+      color: var(--blush);
+    }
+    .about-img-badge span {
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .about-content h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--deep);
+      margin-bottom: 24px;
+    }
+    .about-content p {
+      font-size: .9rem;
+      color: var(--mid);
+      margin-bottom: 20px;
+      line-height: 1.9;
+    }
+
+    .about-features {
+      list-style: none;
+      margin: 32px 0 40px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .about-features li {
+      display: flex; align-items: center; gap: 14px;
+      font-size: .85rem; color: var(--text);
+    }
+    .about-features li::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--rose);
+      flex-shrink: 0;
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews-header {
+      text-align: center; margin-bottom: 64px;
+    }
+    .reviews-header h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--deep);
+    }
+
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border: 1px solid rgba(201,128,106,.15);
+      padding: 36px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .review-card:hover { box-shadow: 0 12px 40px rgba(58,31,26,.1); transform: translateY(-4px); }
+
+    .review-stars { color: var(--gold); margin-bottom: 16px; font-size: .9rem; }
+
+    .review-text {
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .review-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .review-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush), var(--rose));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-serif); font-size: 1rem; color: white;
+    }
+    .review-name { font-weight: 500; font-size: .85rem; color: var(--deep); }
+    .review-via { font-size: .7rem; color: var(--mid); letter-spacing: .05em; }
+
+    .reviews-cta { text-align: center; margin-top: 48px; }
+
+    /* Google Maps embed */
+    .google-maps-reviews {
+      margin-top: 48px;
+    }
+    .gmaps-note {
+      text-align: center;
+      font-size: .78rem;
+      color: var(--mid);
+      margin-bottom: 16px;
+      letter-spacing: .05em;
+    }
+
+    /* ===== BOOKING / FORM ===== */
+    .booking-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .booking-info h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--deep);
+      margin-bottom: 20px;
+    }
+    .booking-info p {
+      font-size: .9rem; color: var(--mid); line-height: 1.8; margin-bottom: 32px;
+    }
+
+    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(201,128,106,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-label { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rose); margin-bottom: 2px; }
+    .contact-value { font-size: .9rem; color: var(--deep); }
+
+    /* form */
+    .booking-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--mid);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 14px 16px;
+      border: 1.5px solid rgba(201,128,106,.25);
+      border-radius: var(--radius);
+      background: var(--white);
+      font-family: var(--ff-sans);
+      font-size: .9rem;
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(201,128,106,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-consent {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .75rem; color: var(--mid);
+    }
+    .form-consent input { width: 16px; height: 16px; margin-top: 2px; }
+    .form-consent a { color: var(--rose); text-decoration: underline; }
+
+    .form-success {
+      display: none;
+      text-align: center; padding: 32px;
+      background: rgba(201,128,106,.08);
+      border-radius: var(--radius);
+      border: 1px solid rgba(201,128,106,.2);
+    }
+    .form-success h3 {
+      font-family: var(--ff-serif); font-size: 1.8rem;
+      color: var(--deep); margin-bottom: 8px;
+    }
+
+    /* ===== CTA STRIP ===== */
+    .cta-strip {
+      background: var(--deep);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-strip h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .cta-strip p {
+      color: var(--blush); font-size: .95rem; margin-bottom: 40px;
+    }
+    .cta-strip .btn--primary {
+      background: var(--rose); color: var(--white);
+    }
+    .cta-strip .btn--primary:hover { background: var(--blush); color: var(--deep); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #2a1510;
+      padding: 60px 0 32px;
+      color: rgba(253,246,238,.6);
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px; margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-family: var(--ff-serif);
+      font-size: 1.8rem;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .footer-brand-name span { color: var(--rose); }
+    .footer-about { font-size: .82rem; line-height: 1.8; max-width: 280px; }
+
+    .footer-col h4 {
+      font-family: var(--ff-sans);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: .82rem;
+      color: rgba(253,246,238,.6);
+      transition: var(--transition);
+    }
+    .footer-links a:hover { color: var(--blush); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .75rem;
+    }
+
+    /* ===== PRIVACY POLICY PAGE ===== */
+    #privacy {
+      display: none;
+    }
+    #privacy.active {
+      display: block;
+    }
+    .privacy-content {
+      max-width: 760px; margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+    .privacy-content h1 {
+      font-size: 2.8rem; color: var(--deep); margin-bottom: 8px;
+    }
+    .privacy-date { font-size: .8rem; color: var(--mid); margin-bottom: 48px; }
+    .privacy-content h2 {
+      font-size: 1.5rem; color: var(--deep);
+      margin: 40px 0 12px;
+    }
+    .privacy-content p, .privacy-content li {
+      font-size: .9rem; color: var(--mid); line-height: 1.9; margin-bottom: 12px;
+    }
+    .privacy-content ul { padding-left: 20px; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 40px;
+      cursor: pointer;
+    }
+    .back-btn:hover { text-decoration: underline; }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    }
+    .whatsapp-float a {
+      display: flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      box-shadow: 0 6px 24px rgba(37,211,102,.4);
+      transition: var(--transition);
+    }
+    .whatsapp-float a:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,.5); }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1; transform: none;
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .about-grid,
+      .booking-inner,
+      .footer-inner { grid-template-columns: 1fr; gap: 48px; }
+
+      .hero-visual { order: -1; }
+      .hero-img-placeholder,
+      .hero-img-wrap img { height: 340px; }
+
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--white);
+        padding: 16px 0;
+        box-shadow: 0 8px 24px rgba(58,31,26,.1);
+      }
+      .nav-links.open a {
+        display: block; padding: 12px 24px; border-bottom: 1px solid rgba(201,128,106,.1);
+      }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+      .about-img-badge { right: 0; bottom: -16px; }
+
+      .hero-badges { gap: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ===========================
+     MAIN LANDING PAGE
+=========================== -->
+<div id="main-page">
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">Studio<span>Nails</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a href="#agendamento" class="btn btn--primary nav-cta" onclick="gtag_report_conversion()">Agendar Agora</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-inner">
+
+      <div class="hero-text">
+        <div class="hero-eyebrow reveal">
+          <span class="hero-eyebrow-line"></span>
+          <span class="tag">Studio Premium · Juazeiro, BA</span>
+        </div>
+        <h1 class="reveal reveal-delay-1">
+          Unhas que <em>contam</em><br>a sua história
+        </h1>
+        <p class="hero-sub reveal reveal-delay-2">
+          Arte, cuidado e sofisticação em cada detalhe. 
+          Experiência de nail design exclusiva para mulheres que se permitem o melhor.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#agendamento" class="btn btn--primary" onclick="gtag_report_conversion()">
+            ✦ Agendar meu horário
+          </a>
+          <a href="#servicos" class="btn btn--outline">Ver serviços</a>
+        </div>
+        <div class="hero-badges reveal">
+          <div>
+            <div class="hero-badge-num">500+</div>
+            <div class="hero-badge-label">Clientes atendidas</div>
+          </div>
+          <div>
+            <div class="hero-badge-num">8+</div>
+            <div class="hero-badge-label">Anos de experiência</div>
+          </div>
+          <div>
+            <div class="hero-badge-num">5★</div>
+            <div class="hero-badge-label">Avaliação Google</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-img-wrap">
+          <!-- Substitua pela sua foto real -->
+          <div class="hero-img-placeholder">[ Sua foto aqui ]</div>
+          <div class="hero-img-deco"></div>
+        </div>
+        <div class="hero-img-deco2">
+          <div class="stars">★★★★★</div>
+          <div class="hero-card-text">"Amei o resultado!"</div>
+          <div class="hero-card-sub">Cliente satisfeita · Google</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section section--alt" id="servicos">
+    <div class="container">
+      <div class="services-header reveal">
+        <span class="tag">O que oferecemos</span>
+        <h2>Serviços<em style="font-style:italic;color:var(--rose)"> exclusivos</em><br>para você</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">💅</div>
+          <div class="service-name">Manicure Clássica</div>
+          <div class="service-desc">Cuidado completo das cutículas, lixamento perfeito e esmaltação com as melhores marcas do mercado.</div>
+          <div class="service-price">A partir de R$ 45</div>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">🦶</div>
+          <div class="service-name">Pedicure Premium</div>
+          <div class="service-desc">Ritual relaxante para os pés com esfoliação, hidratação e esmaltação impecável.</div>
+          <div class="service-price">A partir de R$ 60</div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">✨</div>
+          <div class="service-name">Gel & Fibra</div>
+          <div class="service-desc">Alongamento e fortalecimento das unhas com gel ou fibra de vidro. Durabilidade e beleza garantidas.</div>
+          <div class="service-price">A partir de R$ 120</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🎨</div>
+          <div class="service-name">Nail Art</div>
+          <div class="service-desc">Designs exclusivos, estampas, pedras, cromados e arte personalizada para expressar sua personalidade.</div>
+          <div class="service-price">A partir de R$ 80</div>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">🌸</div>
+          <div class="service-name">Esmaltação em Gel</div>
+          <div class="service-desc">Esmaltação de longa duração com gel UV. Brilho intenso, sem lascar, por até 3 semanas.</div>
+          <div class="service-price">A partir de R$ 75</div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">💎</div>
+          <div class="service-name">Pacote Completo</div>
+          <div class="service-desc">Mani + Pedi + Hidratação especial com paraffina. O ritual completo de autocuidado que você merece.</div>
+          <div class="service-price">A partir de R$ 130</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="sobre">
+    <div class="container about-grid">
+      <div class="about-img-wrap reveal">
+        <!-- Substitua pela sua foto -->
+        <div class="about-img-inner">[ Foto da profissional ]</div>
+        <div class="about-img-badge">
+          <strong>8+</strong>
+          <span>anos de<br>experiência</span>
+        </div>
+      </div>
+      <div class="about-content reveal reveal-delay-1">
+        <span class="tag">Sobre mim</span>
+        <h2>Dedicada à arte<br>de realçar sua beleza</h2>
+        <p>
+          Sou apaixonada por unhas desde os meus primeiros anos de formação. 
+          Ao longo de mais de 8 anos de carreira, atendi centenas de clientes e me especializei 
+          nas técnicas mais modernas do mercado de nail design.
+        </p>
+        <p>
+          Cada atendimento é único. Ouço você, entendo seu estilo e entrego um resultado 
+          que vai além da expectativa — porque você merece o melhor.
+        </p>
+        <ul class="about-features">
+          <li>Certificada em Nail Design Avançado</li>
+          <li>Especialista em Alongamento em Gel e Acrílico</li>
+          <li>Produtos 100% importados e de alta performance</li>
+          <li>Ambiente higienizado e acolhedor</li>
+          <li>Atendimento personalizado e exclusivo</li>
+        </ul>
+        <a href="#agendamento" class="btn btn--primary" onclick="gtag_report_conversion()">Agende sua visita</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section class="section section--alt" id="depoimentos">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <span class="tag">Depoimentos</span>
+        <h2>O que dizem<br><em style="font-style:italic;color:var(--rose)">minhas clientes</em></h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Melhor manicure que já tive! As unhas ficaram perfeitas e duraram mais de 3 semanas. Profissional incrível, super caprichosa."</div>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <div>
+              <div class="review-name">Ana Clara S.</div>
+              <div class="review-via">via Google Reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Ambiente lindo, atendimento nota 10. Fiz gel pela primeira vez e me apaixonei. Já marquei o próximo horário!"</div>
+          <div class="review-author">
+            <div class="review-avatar">J</div>
+            <div>
+              <div class="review-name">Juliana M.</div>
+              <div class="review-via">via Google Reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"A nail art que ela fez para o meu casamento foi um sonho! Todo mundo perguntou quem fez. Super recomendo!"</div>
+          <div class="review-author">
+            <div class="review-avatar">F</div>
+            <div>
+              <div class="review-name">Fernanda R.</div>
+              <div class="review-via">via Google Reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Maps Reviews Embed -->
+      <!-- ======================================================
+           INTEGRAÇÃO GOOGLE MAPS REVIEWS
+           Substitua "SEU_PLACE_ID" pelo Place ID do seu negócio
+           Para obter o Place ID: https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
+      ====================================================== -->
+      <div class="google-maps-reviews reveal">
+        <p class="gmaps-note">Ver todas as avaliações no Google Maps</p>
+        <div style="width:100%;overflow:hidden;border-radius:4px;">
+          <!--
+            OPÇÃO 1: Iframe do Google Maps com avaliações
+            Substitua a URL abaixo pelo embed do seu negócio:
+            Acesse: https://www.google.com/maps → encontre seu negócio → Compartilhar → Incorporar um mapa
+          -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922!2d-39.31!3d-9.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zStudio+Nails!5e0!3m2!1spt-BR!2sbr!4v0000000000000"
+            width="100%"
+            height="200"
+            style="border:0;border-radius:4px;filter:grayscale(20%) saturate(0.9);"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Studio Nails no Google Maps">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="reviews-cta reveal">
+        <a href="#agendamento" class="btn btn--primary" onclick="gtag_report_conversion()">Quero ser sua próxima cliente ✦</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA STRIP ===== -->
+  <section class="cta-strip">
+    <div class="container">
+      <div class="reveal">
+        <span class="tag" style="color:var(--blush)">Oferta especial</span>
+        <h2>Primeira visita com<br><em style="font-style:italic">10% de desconto</em></h2>
+        <p>Mencione esse site ao agendar e garanta seu desconto exclusivo.</p>
+        <a href="#agendamento" class="btn btn--primary" onclick="gtag_report_conversion()">Agendar com desconto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING / CONTACT ===== -->
+  <section class="section" id="agendamento">
+    <div class="container booking-inner">
+
+      <div class="booking-info reveal">
+        <span class="tag">Agendamento</span>
+        <h2 id="contato">Vamos cuidar<br>de você?</h2>
+        <p>Preencha o formulário ou entre em contato diretamente. Respondemos em até 2 horas durante o horário de atendimento.</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Endereço</div>
+              <div class="contact-value">Rua Exemplo, 123 – Juazeiro, BA</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value">(74) 99999-9999</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-label">Horários</div>
+              <div class="contact-value">Seg–Sex: 8h–18h · Sáb: 8h–14h</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📷</div>
+            <div>
+              <div class="contact-label">Instagram</div>
+              <div class="contact-value">@studionails.exemplo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão para plataforma de agendamento -->
+        <div style="margin-top:36px;">
+          <p style="font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;">Ou agende direto pela plataforma:</p>
+          <!--
+            Substitua o href pelo link da sua plataforma de agendamento
+            (Booksy, Calendly, Mindbody, Trinks, etc.)
+          -->
+          <a href="https://link-da-sua-plataforma.com" target="_blank" class="btn btn--outline" onclick="gtag_report_conversion()">
+            📅 Agendar pelo sistema
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <form class="booking-form" id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="form-group">
+              <label for="telefone">WhatsApp *</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="servico">Serviço desejado *</label>
+            <select id="servico" name="servico" required>
+              <option value="">Selecione um serviço…</option>
+              <option>Manicure Clássica</option>
+              <option>Pedicure Premium</option>
+              <option>Gel & Fibra</option>
+              <option>Nail Art</option>
+              <option>Esmaltação em Gel</option>
+              <option>Pacote Completo</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="data">Data preferida</label>
+              <input type="date" id="data" name="data" />
+            </div>
+            <div class="form-group">
+              <label for="horario">Horário preferido</label>
+              <select id="horario" name="horario">
+                <option>Manhã (8h–12h)</option>
+                <option>Tarde (12h–17h)</option>
+                <option>Fim do dia (17h–18h)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Observações</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte mais sobre o que deseja…"></textarea>
+          </div>
+          <div class="form-consent">
+            <input type="checkbox" id="consent" name="consent" required />
+            <label for="consent">
+              Concordo com a <a href="#" onclick="showPrivacy(event)">Política de Privacidade</a> e autorizo o contato para confirmar meu agendamento.
+            </label>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
+            ✦ Solicitar agendamento
+          </button>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🌸</div>
+          <h3>Solicitação enviada!</h3>
+          <p style="font-size:.9rem;color:var(--mid);">
+            Obrigada pelo seu contato! Retornaremos em breve pelo WhatsApp para confirmar seu horário.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-name">Studio<span>Nails</span></div>
+          <p class="footer-about">Arte em unhas, cuidado e sofisticação em cada detalhe. Seu studio premium de manicure e pedicure em Juazeiro, BA.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#agendamento">Agendamento</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="showPrivacy(event)">Política de Privacidade</a></li>
+            <li><a href="#" onclick="showPrivacy(event)">Termos de Uso</a></li>
+          </ul>
+          <div style="margin-top:28px;">
+            <h4>Redes sociais</h4>
+            <ul class="footer-links">
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">TikTok</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Studio Nails · Todos os direitos reservados</span>
+        <span>Desenvolvido com ♥ para <strong style="color:var(--blush)">Studio Nails</strong></span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /#main-page -->
+
+
+<!-- ===========================
+     PRIVACY POLICY PAGE
+=========================== -->
+<div id="privacy">
+  <nav id="navbar-privacy" style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,246,238,.95);backdrop-filter:blur(12px);padding:14px 0;box-shadow:0 2px 24px rgba(58,31,26,.08);">
+    <div class="container nav-inner">
+      <a href="#" onclick="hidePrivacy(event)" class="nav-logo">Studio<span style="color:var(--rose)">Nails</span></a>
+    </div>
+  </nav>
+  <div class="privacy-content">
+    <span onclick="hidePrivacy(event)" class="back-btn">← Voltar ao site</span>
+    <h1>Política de Privacidade</h1>
+    <p class="privacy-date">Última atualização: Janeiro de 2025</p>
+
+    <h2>1. Quem somos</h2>
+    <p>Studio Nails é um studio de manicure e pedicure localizado em Juazeiro, Bahia. Esta Política de Privacidade descreve como coletamos, usamos e protegemos seus dados pessoais conforme a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).</p>
+
+    <h2>2. Dados que coletamos</h2>
+    <p>Ao preencher nosso formulário de agendamento, podemos coletar:</p>
+    <ul>
+      <li>Nome completo</li>
+      <li>Número de WhatsApp / telefone</li>
+      <li>Endereço de e-mail (opcional)</li>
+      <li>Data e horário preferidos</li>
+      <li>Serviço desejado e observações</li>
+    </ul>
+    <p>Também podemos coletar automaticamente dados de navegação através de cookies e tags de rastreamento (Google Analytics, Google Ads, Meta Pixel).</p>
+
+    <h2>3. Finalidade do tratamento</h2>
+    <ul>
+      <li>Confirmar e gerenciar agendamentos</li>
+      <li>Entrar em contato para confirmação ou dúvidas</li>
+      <li>Melhorar nossos serviços e comunicações</li>
+      <li>Mensurar a eficácia de campanhas publicitárias (Google Ads e Meta Ads)</li>
+    </ul>
+
+    <h2>4. Cookies e tecnologias de rastreamento</h2>
+    <p>Utilizamos cookies e pixels de rastreamento dos seguintes serviços:</p>
+    <ul>
+      <li><strong>Google Analytics / Google Ads:</strong> para análise de tráfego e conversões</li>
+      <li><strong>Meta Pixel (Facebook/Instagram):</strong> para rastreamento de campanhas e criação de públicos</li>
+      <li><strong>Google Tag Manager:</strong> gerenciamento centralizado de tags</li>
+    </ul>
+    <p>Você pode desativar cookies nas configurações do seu navegador ou através das opções de privacidade das plataformas citadas.</p>
+
+    <h2>5. Compartilhamento de dados</h2>
+    <p>Não vendemos seus dados pessoais. Podemos compartilhá-los apenas com:</p>
+    <ul>
+      <li>Plataformas de agendamento utilizadas para confirmação do horário</li>
+      <li>Google e Meta, conforme seus respectivos termos de serviço e políticas de privacidade, para fins de publicidade</li>
+    </ul>
+
+    <h2>6. Seus direitos (LGPD)</h2>
+    <p>Você tem o direito de:</p>
+    <ul>
+      <li>Confirmar a existência de tratamento dos seus dados</li>
+      <li>Acessar seus dados</li>
+      <li>Corrigir dados incompletos ou desatualizados</li>
+      <li>Solicitar a exclusão dos seus dados</li>
+      <li>Revogar o consentimento a qualquer momento</li>
+    </ul>
+    <p>Para exercer seus direitos, entre em contato pelo WhatsApp: (74) 99999-9999 ou pelo e-mail: contato@studionails.com.br</p>
+
+    <h2>7. Segurança dos dados</h2>
+    <p>Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados contra acesso não autorizado, perda ou divulgação indevida.</p>
+
+    <h2>8. Alterações nesta política</h2>
+    <p>Esta política pode ser atualizada a qualquer momento. A versão mais recente estará sempre disponível nesta página.</p>
+
+    <h2>9. Contato</h2>
+    <p>Studio Nails · Juazeiro, Bahia, Brasil<br>
+    WhatsApp: (74) 99999-9999<br>
+    E-mail: contato@studionails.com.br</p>
+
+    <div style="margin-top:48px;">
+      <span onclick="hidePrivacy(event)" class="back-btn">← Voltar ao site</span>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Float -->
+<div class="whatsapp-float">
+  <!-- Substitua o número no href: https://wa.me/55XXXXXXXXXXX -->
+  <a href="https://wa.me/5574999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
+     target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.134.559 4.133 1.532 5.87L.057 23.428a.5.5 0 0 0 .614.614l5.596-1.47A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.502-5.24-1.376l-.374-.214-3.883 1.019 1.036-3.785-.233-.392A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  // ===== NAVBAR SCROLL =====
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ===== HAMBURGER =====
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.addEventListener('click', () => navLinks.classList.remove('open'));
+
+  // ===== REVEAL ON SCROLL =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== FORM SUBMISSION =====
+  const form = document.getElementById('booking-form');
+  const formSuccess = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Basic validation
+    const nome = document.getElementById('nome').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const servico = document.getElementById('servico').value;
+    const consent = document.getElementById('consent').checked;
+
+    if (!nome || !telefone || !servico || !consent) {
+      alert('Por favor, preencha os campos obrigatórios e aceite a política de privacidade.');
+      return;
+    }
+
+    // Google Ads conversion event
+    gtag_report_conversion();
+
+    // Facebook Pixel Lead event
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead');
+    }
+
+    // ============================================================
+    // INTEGRAÇÃO COM FORMULÁRIO / CRM
+    // Opção A: envie para um endpoint próprio via fetch:
+    //
+    // const data = new FormData(form);
+    // fetch('/api/agendamento', { method: 'POST', body: data })
+    //   .then(() => showSuccess());
+    //
+    // Opção B: redirecione para plataforma de agendamento:
+    // window.location.href = 'https://link-da-sua-plataforma.com';
+    //
+    // Opção C: abre WhatsApp com mensagem pré-preenchida:
+    // ============================================================
+
+    const msg = encodeURIComponent(
+      `Olá! Gostaria de agendar um horário.\n\n` +
+      `*Nome:* ${nome}\n` +
+      `*Serviço:* ${servico}\n` +
+      `*Data:* ${document.getElementById('data').value || 'A combinar'}\n` +
+      `*Horário:* ${document.getElementById('horario').value}`
+    );
+
+    // Mostra mensagem de sucesso
+    form.style.display = 'none';
+    formSuccess.style.display = 'block';
+
+    // Abre WhatsApp após 1s
+    setTimeout(() => {
+      window.open(`https://wa.me/5574999999999?text=${msg}`, '_blank');
+    }, 1000);
+  });
+
+  // ===== PHONE MASK =====
+  document.getElementById('telefone').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '');
+    if (v.length <= 10) v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    else v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+    this.value = v;
+  });
+
+  // ===== PRIVACY PAGE =====
+  function showPrivacy(e) {
+    if (e) e.preventDefault();
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('privacy').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function hidePrivacy(e) {
+    if (e) e.preventDefault();
+    document.getElementById('privacy').classList.remove('active');
+    document.getElementById('main-page').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  // ===== DATE MIN =====
+  const dateInput = document.getElementById('data');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+</script>
+
+</body>
+</html>
