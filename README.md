@@ -1,5 +1,5 @@
-💅 Studio Nails – Landing Page Premium
-Esta é uma Landing Page de Alta Conversão desenvolvida para profissionais de Nail Design, Manicure e Pedicure que buscam uma presença digital sofisticada e eficiente. O projeto foi estruturado com foco em experiência do usuário (UX), carregamento rápido e prontidão para campanhas de tráfego pago.
+# Studio Nails – Modelo Landing Page Premium Estética
+Esta é uma Landing Page (modelo) de Alta Conversão desenvolvida para profissionais de Nail Design, Manicure e Pedicure que buscam uma presença digital sofisticada e eficiente. O projeto foi estruturado com foco em experiência do usuário (UX), carregamento rápido e prontidão para campanhas de tráfego pago.
 
 🚀 Visualização em Tempo Real
 O projeto está publicado e pode ser acessado em:
